@@ -1,0 +1,29 @@
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "====================WEEKLY CLASS SCHEDUlE====================";
+        
+    cout << "\nDay\t\t\tTime\t\t\tCourse Code\t\tSection\t\tRoom" << endl;
+    
+    cout << "\nMonday\t\t7:00-9:40\t\tCCS0001\t\t\tTN02\t\tONLINE" << endl;
+    cout << "Monday\t\t11:00-12:50\t\tGED0011\t\t\tTN02\t\tASYNCH" << endl;
+    cout << "Monday\t\t1:00-2:40\t\tGED0006\t\t\tTN02\t\tONLINE" << endl;
+    
+    cout << "\nTuesday\t\t7:00-9:50\t\tCCS0001L\t\tTN02\t\tF702" << endl;
+    cout << "Tuesday\t\t11:00-12:50\t\tGED0004\t\t\tTN02\t\tF301" << endl;
+    cout << "Tuesday\t\t1:00-2:50\t\tGED0009\t\t\tTN02\t\tF505" << endl;
+
+    cout << "\nWednesday\t7:00-9:50\t\tCCS0003L\t\tTN02\t\tF702" << endl;
+
+    cout << "\nThursday\t7:00-9:50\t\tCCS0003\t\t\tTN02\t\tONLINE" << endl;
+    cout << "Thursday\t11:00-12:50\t\tGED0011\t\t\tTN02\t\tONLINE" << endl;
+    cout << "Thursday\t1:00-2:40\t\tGED0006\t\t\tTN02\t\tASYNCH" << endl;
+
+    cout << "\nFriday\t\t11:00-12:50\t\tGED0004\t\t\tTN02\t\tF301" << endl;
+    cout << "Thursday\t1:00-2:50\t\tGED0009\t\t\tTN02\t\tF505" << endl;
+
+    
+    return 0;
+}
