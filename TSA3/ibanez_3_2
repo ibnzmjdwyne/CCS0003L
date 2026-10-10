@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    
+    int number = 10 ; 
+    char Letter = 'a' ;
+    bool boolean = true ; 
+    float Float = 3.14 ;
+
+    
+    cout << "Varibale Name\tData Type\tInitial Value" << endl;
+    cout << "Number\t\t\tInteger\t\t" << number << endl;
+    cout << "Letter\t\t\tCharacter\t" << Letter << endl;
+    cout << boolalpha;
+    cout << "Result\t\t\tBoolean\t\t" << boolean << endl;
+    cout << "Float\t\t\tFloat\t\t" << Float << endl;
+
+
+
+    
+    
+    return 0;
+}
