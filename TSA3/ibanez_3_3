@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    //Inpts from the user
+    double num1, num2, sum, diff, prod, rem, quo;
+
+    //Result
+    cout << "========Operation Arithmetic========" << endl;
+    cout << "Enter the first number: ";
+    cin >> num1;
+    cout << "Enter the second number: ";
+    cin >> num2;
+
+    //Processes that will undergo
+    sum = num1 + num2;
+    diff = num1 - num2;
+    prod = num1 * num2;
+
+    if (num2!=0){
+        rem = fmod(num1,num2);
+        quo = num1/num2;
+    cout << "================++++++++++==========" << endl;
+    cout << "Sum:" << sum << endl;
+    cout << "Difference: " << diff << endl;
+    cout << "Product: " << prod << endl;
+    cout << "Remainder: " << rem << endl;
+    cout << "Quotient: " << quo << endl;
+    }
+    else 
+     cout << "\nA zero number will not provide answers " 
+          << "\nfor the remainder and the quotient" << endl;
+
+    return 0;
+}
