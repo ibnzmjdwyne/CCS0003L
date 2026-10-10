@@ -1,0 +1,40 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    //Inpts from the user
+    double php, usd, euro, yuan, koruna, krone, shegel, dinar;
+    double phpex = 43.33089,
+           euroex = 0.734719,
+           yuanex = 6.346934,
+           korunaex = 18.77263,
+           kroneex = 5.449007,
+           shegelex = 3.726334,
+           dinarex = 0.274588;
+    
+    //Result
+    cout << "Enter a Philippine Peso: ";
+    cin >> php;
+
+    usd = php/phpex;
+    euro = usd*euroex;
+    yuan = usd*yuanex;
+    koruna = usd*korunaex;
+    krone = usd*kroneex;
+    shegel = usd*shegelex;
+    dinar = usd*dinarex;
+ 
+    //Processes that will undergo
+    cout << "\n========= CONVERSION =========" << endl;
+
+    cout << "US Dollar: " << usd << endl;
+    cout << "Euro: " << euro << endl;
+    cout << "Yuan: " << yuan << endl;
+    cout << "Koruna: " << koruna << endl;
+    cout << "Krone: " << krone << endl;
+    cout << "Shegel: " << shegel << endl;
+    cout << "Dinar: " << dinar << endl;
+  
+    return 0;
+} 
