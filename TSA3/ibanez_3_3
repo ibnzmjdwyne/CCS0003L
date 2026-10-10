@@ -21,7 +21,7 @@ int main() {
     if (num2!=0){
         rem = fmod(num1,num2);
         quo = num1/num2;
-    cout << "================++++++++++==========" << endl;
+    cout << "====================================" << endl;
     cout << "Sum:" << sum << endl;
     cout << "Difference: " << diff << endl;
     cout << "Product: " << prod << endl;
