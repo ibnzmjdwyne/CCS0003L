@@ -1,0 +1,28 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+
+int main ()
+{ 
+	// inputs
+    double a, b, angl_c, c, radian;
+    const double PI = 3.14;
+
+	//Result
+    cout << "Enter the value of a: ";
+    cin >> a;
+    cout << "Enter the value of b: ";
+    cin >> b;
+    cout << "Enter the angle of C: ";
+    cin >> angl_c;
+
+	//Process
+    radian = angl_c * (PI/180);
+    c = sqrt((pow(a,2) + pow(b,2)) - (2*(a*b)*(cos(radian))));
+
+    cout << fixed << setprecision(2);
+    cout << "Side C: " << c << endl;
+    
+	return 0;
+}
