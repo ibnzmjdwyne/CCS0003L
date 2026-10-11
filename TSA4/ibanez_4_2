@@ -1,0 +1,63 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+
+
+using namespace std;
+
+
+int main ()
+{ 
+	// inputs
+    string employee_id, pay_date, employee_name;
+	double monthly_salary, lates;
+	double hour_late, hourly_rate, ded_late, tax, total_deductions, net_pay;
+
+    // constants
+    const double philhealth = 1000;
+    const double pagibig = 800;
+    const double SSS = 1200;
+    const double tax_rate = 0.12;
+
+	//Result
+    cout << "Enter yoour Employee ID: ";
+	getline(cin,employee_id);
+	cout << "Enter you Payroll Period: ";
+	getline(cin,pay_date);
+	cout << "Enter you Employee Name: ";
+	getline(cin,employee_name);
+	cout << "Enter your Monthly Salary: ";
+	cin >> monthly_salary;
+	cout << "Enter your late and absences (in minutes): ";
+	cin >> lates; 
+
+	//Process
+	hour_late = lates / 60;
+	hourly_rate = (monthly_salary / 30) / 8;
+	ded_late = hourly_rate * hour_late;
+	tax = monthly_salary * tax_rate;
+	total_deductions = ded_late + tax + philhealth + pagibig + SSS;
+	net_pay = monthly_salary - total_deductions;
+
+    //Display
+    cout << fixed << setprecision(2);
+    
+	cout << "\n\t\t\t\tFEU - Institute of Technology" << endl;
+	cout << "\nEmployee ID: " << employee_id 
+         << "\t\t\t\tPayroll Period: " << pay_date << endl;
+	cout << "Employee Name: " << employee_name << endl;
+	cout << "\nINCOME" 
+         << "\t\t\t\t\t\t\t\tDEDUCTIONS" << endl;
+	cout << "Monthly Salary: Php " << monthly_salary 
+        << "\t\tLates and Absences  (" << ded_late << ")" <<endl;
+	cout << "\t\t\t\t\t\t\t\t\tPhilhealth (" << philhealth << ")" << endl;
+	cout << "\t\t\t\t\t\t\t\t\tPag-ibig (" << pagibig << ")" << endl;
+	cout << "\t\t\t\t\t\t\t\t\tSSS (" << SSS << ")" << endl;
+	cout << "\t\t\t\t\t\t\t\t\tWithholding tax (" << tax << ")" << endl;
+	cout << "Total Earnings: Php " << monthly_salary << endl;
+	cout << "Total Deductions: Php " << total_deductions << endl;
+	cout << "Net Pay: Php " << net_pay << endl;
+
+
+	return 0;
+}
