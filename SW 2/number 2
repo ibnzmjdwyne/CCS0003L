@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+int main() 
+{
+    double n1,n2, result;
+    char aoperator;
+
+    cout << "Enter two numbers: ";
+    cin >> n1 >> n2;
+    cout << "Enter the arithmetic operator (+, -, *, /): ";
+    cin >> aoperator;
+
+    switch (aoperator)
+    {
+        case '+':
+            result = n1 + n2;
+            break;
+        case '-':
+            result = n1 - n2;
+            break;
+        case '*':
+            result = n1 * n2;
+            break;
+        case '/':
+            if (n2 == 0) {
+                cout << "\nCannot divide by zero.";
+                return 0;
+            }
+            result = n1 / n2;
+            break;
+        default:
+            cout << "\nInvalid operator.";
+            return 0;
+    }
+    cout << "Result: " << result << endl;
+    cout << "Operation Success!";
+    return 0;
+}
