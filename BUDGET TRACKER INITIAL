@@ -1,0 +1,123 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	int choice, category;
+	double inputbalance, balance = 0, expense = 0, remaining_balance = 0, total_expenses = 0;
+	int num_expenses;
+    string description, category_name;
+
+    do{
+    cout << "\n======BUDGET TRACKER=======";
+	cout << "\nSelect a Number from 1-5:  ";
+    cout << "\n1. Add a Balance ";
+	cout << "\n2. Add a Expenses ";
+    cout << "\n3. View Expense History ";
+	cout << "\n4. View Budget Summary ";
+	cout << "\n5. Exit ";
+    cout << "\nOption:  ";
+	cin >> choice;
+
+	switch (choice) {
+        case 1:
+            cout << "\nEnter the amount: ";
+        	cin >> inputbalance;
+
+         while (inputbalance <= 0) {
+		    cout << "Enter a valid Amount. Please Try again" << endl;
+		    cout << "\nEnter the amount: ";
+        	cin >> inputbalance;
+	    }
+        balance += inputbalance;
+        remaining_balance = balance - total_expenses;
+        cout << "Balance: ₱" << remaining_balance << endl;
+        break;
+
+		case 2:	
+          if (remaining_balance == 0){
+                    cout << "Enter a balance first!" << endl;
+                    break;
+                }
+            else{
+                    cout << "\nNumber of Expenses: ";
+			        cin >> num_expenses;
+
+			while (num_expenses <= 0) {
+				cout << "Enter a valid number. Please Try again" << endl;
+				cout << "Number of Expenses: ";
+				cin >> num_expenses;
+			}
+            }
+
+			for (int counter = 1; counter <= num_expenses; counter++) {
+				cout << "Expense " << counter << ": ";
+				cin >> expense;
+				if (expense <= 0) {
+					cout << "Enter a valid Amount. Please Try again" << endl;
+					counter--;
+				}else if (expense > remaining_balance){
+                    cout << "\nInsufficent Balance" << endl;
+                    cout << "Please enter a smaller amount" << endl;
+					counter--;
+                }
+				else {
+                    cout << "Category: ";
+                    cout << "\n1. Food ";
+	                cout << "\n2. Transportation";
+                    cout << "\n3. School: ";
+	                cout << "\n4. Other " ;
+                    cout << "\nOption:  ";
+                    cin >> category;
+                    
+                    cout << "\nAmount: " << expense << endl; 
+                    switch(category){
+                        case 1: 
+                            category_name ="Food";
+                            break;
+                        case 2: 
+                            category_name = "Transportation" ;
+                            break;
+                        case 3: 
+                            category_name = "School";
+                            break;
+                        case 4: 
+                            category_name = "Other";;
+                            break;
+                    }
+                    cout << "Category:" << category_name << endl;
+                    cout << "Description: ";
+                    getline(cin >> ws, description);
+
+	                total_expenses += expense;
+                    remaining_balance = balance - total_expenses;
+                        if(remaining_balance == 0){
+                            cout << "BUDGET FULLY SPENT" << endl;
+                            break;
+                        }
+                    }  
+			}
+			break;
+        case 3:
+            cout << "======EXPENSE HISTORY======";
+            cout << "No.";
+            break;
+		case 4:
+            remaining_balance = balance - total_expenses;
+
+			cout << "\nMonthly Budget: " << balance << endl;
+			cout << "Total Expense: " << total_expenses << endl;
+			cout << "Remaining Balance: " << remaining_balance << endl;
+            break;
+
+		case 5:
+            cout << "\nTHANK YOU!";
+			break;
+		default:
+			cout << "Invalid Choice! Please only select from 1 to 5.\n";
+				break;
+	}
+    }while(choice!=5);
+	return 0;
+}
