@@ -1,13 +1,25 @@
 #include <iostream>
 #include <string>
+#include <vector>
+#include <iomanip>
 using namespace std;
+
+
+struct Expense {
+    double expense;
+    string category_name;
+    string description;
+};
+
+vector<Expense> history;
 
 int main()
 {
 	int choice, category;
 	double inputbalance, balance = 0, expense = 0, remaining_balance = 0, total_expenses = 0;
 	int num_expenses;
-    string description, category_name;
+    string  category_name;
+    string description;
 
     do{
     cout << "\n======BUDGET TRACKER=======";
@@ -35,34 +47,21 @@ int main()
         cout << "Balance: ₱" << remaining_balance << endl;
         break;
 
-		case 2:	
+		case 2: {
           if (remaining_balance == 0){
-                    cout << "Enter a balance first!" << endl;
-                    break;
-                }
-            else{
-                    cout << "\nNumber of Expenses: ";
-			        cin >> num_expenses;
-
-			while (num_expenses <= 0) {
-				cout << "Enter a valid number. Please Try again" << endl;
-				cout << "Number of Expenses: ";
-				cin >> num_expenses;
-			}
+                cout << "Enter a balance first!" << endl;
+                break;
             }
+			Expense entry;
+            cout << "\nEnter the expense: ";
+			cin >> entry.expense;
 
-			for (int counter = 1; counter <= num_expenses; counter++) {
-				cout << "Expense " << counter << ": ";
-				cin >> expense;
-				if (expense <= 0) {
+				if (entry.expense <= 0) {
 					cout << "Enter a valid Amount. Please Try again" << endl;
-					counter--;
-				}else if (expense > remaining_balance){
+				}else if (entry.expense > remaining_balance){
                     cout << "\nInsufficent Balance" << endl;
                     cout << "Please enter a smaller amount" << endl;
-					counter--;
-                }
-				else {
+                }else{
                     cout << "Category: ";
                     cout << "\n1. Food ";
 	                cout << "\n2. Transportation";
@@ -71,37 +70,53 @@ int main()
                     cout << "\nOption:  ";
                     cin >> category;
                     
-                    cout << "\nAmount: " << expense << endl; 
+                    cout << "\nAmount: " << entry.expense << endl; 
                     switch(category){
                         case 1: 
-                            category_name ="Food";
+                            entry.category_name ="Food";
                             break;
                         case 2: 
-                            category_name = "Transportation" ;
+                            entry.category_name = "Transportation" ;
                             break;
                         case 3: 
-                            category_name = "School";
+                            entry.category_name = "School";
                             break;
                         case 4: 
-                            category_name = "Other";;
+                            entry.category_name = "Other";;
                             break;
                     }
-                    cout << "Category:" << category_name << endl;
+                    cout << "Category:" << entry.category_name << endl;
                     cout << "Description: ";
-                    getline(cin >> ws, description);
+                    getline(cin >> ws, entry.description);
 
-	                total_expenses += expense;
+	                total_expenses += entry.expense;
                     remaining_balance = balance - total_expenses;
+                    history.push_back(entry);
                         if(remaining_balance == 0){
                             cout << "BUDGET FULLY SPENT" << endl;
                             break;
                         }
                     }  
-			}
 			break;
+        }
         case 3:
-            cout << "======EXPENSE HISTORY======";
-            cout << "No.";
+            cout << "===========EXPENSE HISTORY===========" << endl;
+            if (history.empty()){
+                cout << "No expenses recorded yet.";
+            }
+            cout << fixed << setprecision(2);
+              cout << left << setw(5) << "No."
+                   << right << setw(12) << "Amount (PHP)" << "  "
+                   << left << setw(18) << "Category"
+                   << " " << "Description" << endl;    
+
+            for (int i = 0; i < history.size(); i++){
+                   cout << left << setw(5) << i 
+                   << right << setw(12) << history[i].expense << "  "
+                   << left << setw(18) << history[i].category_name
+                   << " " << history[i].description << endl;
+            }
+
             break;
 		case 4:
             remaining_balance = balance - total_expenses;
