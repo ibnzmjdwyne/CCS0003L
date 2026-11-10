@@ -16,16 +16,15 @@ vector<Expense> history;
 int main()
 {
 	int choice, category;
-	double inputbalance, balance = 0, expense = 0, remaining_balance = 0, total_expenses = 0;
-	int num_expenses;
-    string  category_name;
-    string description;
+	double inputbalance, balance = 0, remaining_balance = 0, total_expenses = 0;
+    
+    cout << fixed << setprecision(2);
 
     do{
     cout << "\n===============BUDGET TRACKER===============";
 	cout << "\nSelect a Number from 1-5:  ";
     cout << "\n1. Add a Balance ";
-	cout << "\n2. Add a Expenses ";
+	cout << "\n2. Add an Expense ";
     cout << "\n3. View Expense History ";
 	cout << "\n4. View Budget Summary ";
 	cout << "\n5. Exit ";
@@ -57,10 +56,9 @@ int main()
 			cin >> entry.expense;
 
 				if (entry.expense <= 0) {
-					cout << "Enter a valid Amount. Please Try again" << endl;
+                    cout << "\nEnter a valid amount. Please try again." << endl;
 				}else if (entry.expense > remaining_balance){
-                    cout << "\nInsufficent Balance" << endl;
-                    cout << "Please enter a smaller amount" << endl;
+                    cout << "\nInsufficient Balance" << endl;
                 }else{
                     cout << "Category: ";
                     cout << "\n1. Food ";
@@ -86,7 +84,7 @@ int main()
                             entry.category_name = "School";
                             break;
                         case 4: 
-                            entry.category_name = "Other";;
+                            entry.category_name = "Other";
                             break;
                         default:
                         cout << "Invalid Choice! Please only select from 1 to 4.\n";
@@ -113,13 +111,12 @@ int main()
                 cout << "No expenses recorded yet.";
                 break;
             }
-            cout << fixed << setprecision(2);
             cout << left << setw(4) << "No."
                 << right << setw(14) << "Amount (PHP)" << "     "
                 << left << setw(15) << "Category"
                 << "Description" << endl;    
             for (int i = 0; i < history.size(); i++){
-                   cout << left << setw(4) << i 
+                   cout << left << setw(4) << i+1
                    << right << setw(14) << history[i].expense <<  "     "
                    << left << setw(15) << history[i].category_name
                    << history[i].description << endl;
