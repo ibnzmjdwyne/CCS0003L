@@ -22,7 +22,7 @@ int main()
     string description;
 
     do{
-    cout << "\n======BUDGET TRACKER=======";
+    cout << "\n===============BUDGET TRACKER===============";
 	cout << "\nSelect a Number from 1-5:  ";
     cout << "\n1. Add a Balance ";
 	cout << "\n2. Add a Expenses ";
@@ -69,9 +69,13 @@ int main()
 	                cout << "\n4. Other " ;
                     cout << "\nOption:  ";
                     cin >> category;
-                    
+                while (category < 1 || category > 4) {
+                    cout << "\nEnter a valid option!  ";
+                    cout << "Option:  ";
+                    cin >> category;
+                }
                     cout << "\nAmount: " << entry.expense << endl; 
-                    switch(category){
+                switch(category){
                         case 1: 
                             entry.category_name ="Food";
                             break;
@@ -84,6 +88,9 @@ int main()
                         case 4: 
                             entry.category_name = "Other";;
                             break;
+                        default:
+                        cout << "Invalid Choice! Please only select from 1 to 4.\n";
+
                     }
                     cout << "Category:" << entry.category_name << endl;
                     cout << "Description: ";
@@ -97,24 +104,25 @@ int main()
                             break;
                         }
                     }  
+
 			break;
         }
         case 3:
-            cout << "===========EXPENSE HISTORY===========" << endl;
+            cout << "===============EXPENSE HISTORY===============" << endl;
             if (history.empty()){
                 cout << "No expenses recorded yet.";
+                break;
             }
             cout << fixed << setprecision(2);
-              cout << left << setw(5) << "No."
-                   << right << setw(12) << "Amount (PHP)" << "  "
-                   << left << setw(18) << "Category"
-                   << " " << "Description" << endl;    
-
+            cout << left << setw(4) << "No."
+                << right << setw(14) << "Amount (PHP)" << "     "
+                << left << setw(15) << "Category"
+                << "Description" << endl;    
             for (int i = 0; i < history.size(); i++){
-                   cout << left << setw(5) << i 
-                   << right << setw(12) << history[i].expense << "  "
-                   << left << setw(18) << history[i].category_name
-                   << " " << history[i].description << endl;
+                   cout << left << setw(4) << i 
+                   << right << setw(14) << history[i].expense <<  "     "
+                   << left << setw(15) << history[i].category_name
+                   << history[i].description << endl;
             }
 
             break;
